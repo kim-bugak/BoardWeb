@@ -1,12 +1,11 @@
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="../includes/header.jsp"%>
-<h3>게시판 상세</h3>
+    pageEncoding="UTF-8"%>
+<%@ include file = "../includes/header.jsp"%>
 <%
 BoardVO board = (BoardVO) request.getAttribute("board");
 %>
-<form action="boardRemove.do">
+<form action="deleteBoard.do">
 <input type="hidden" name="bno" value="<%=board.getBoardNo()%>">
 <table class="table">
 	<tr>
@@ -35,10 +34,4 @@ BoardVO board = (BoardVO) request.getAttribute("board");
 	</tr>
 </table>
 </form>
-
-<script>
-	document.querySelector('form>table button.btn.btn-primary').addEventListener('click', function(e){
-		location.href = 'modifyBoard.do?bno=<%=board.getBoardNo()%>';
-	}); //버튼태그찾기
-</script>
-<%@ include file="../includes/footer.jsp"%>
+<%@ include file = "../includes/footer.jsp"%>

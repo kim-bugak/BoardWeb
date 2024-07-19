@@ -2,6 +2,7 @@ package com.yedam.service;
 
 import java.util.List;
 
+import com.yedam.common.SearchVO;
 import com.yedam.vo.BoardVO;
 
 /*
@@ -25,10 +26,11 @@ method) add;
 */
 
 public interface BoardService {
-//    List<BoardVO> boardList();
-	  List<BoardVO> boardList();
-    boolean addBoard(BoardVO board);
-    boolean modifyBoard(BoardVO board);
-    boolean removeBoard(int boardNo);
-    BoardVO getBoard(int boardNo);
+
+	List<BoardVO> boardList(SearchVO search);
+	int totalCount(); // 페이징 계싼
+	boolean addBoard(BoardVO board);
+	boolean modifyBoard(BoardVO board);
+	boolean removeBoard(int boardNo);
+	BoardVO getBoard(int boardNo);
 }
