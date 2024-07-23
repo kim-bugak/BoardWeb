@@ -18,13 +18,14 @@ public class BoardRemove implements Control {
 		// TODO Auto-generated method stub
 
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
 
 		BoardService svc = new BoardServiceImpl();
 		BoardVO baord = svc.getBoard(Integer.parseInt(bno));
 
 		req.setAttribute("board", baord);
-
-		req.getRequestDispatcher("WEB-INF/jsp/boardRemove.jsp").forward(req, resp);
+		req.setAttribute("page", page);
+		req.getRequestDispatcher("board/boardRemove.tiles").forward(req, resp);
 	}
 
 }

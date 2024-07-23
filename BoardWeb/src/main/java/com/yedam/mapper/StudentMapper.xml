@@ -4,15 +4,40 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.StudentMapper">
 
+
+	<select id="memberList" parameterType="string" resultType="com.yedam.vo.MemberVO">
+	select *
+	from tbl_member
+	where responsibility = 'User'
+	<choose>
+		<when test="order == 'member_id'.toString()">
+			order by member_id
+		</when>
+		<when test="order == 'member_nm'.toString()">
+			order by member_nm
+		</when>
+		<otherwise></otherwise>
+	</choose>
+	</select>
+	
+	<select id="selectMember" resultType="com.yedam.vo.MemberVO">
+		select *
+		from tbl_member
+		where member_id = #{id}
+		and member_pw = #{pw}
+	</select>
+
+
 	<select id="studentList" resultType="student">
 		select * from tbl_student
 		order by std_no
 	</select>
-	<select id="selectOne" parameterType="string" resultType= "student">
-	select *
-	from tbl_student
-	where std_no = #{sno}
-	
+	<select id="selectOne" parameterType="string"
+		resultType="student">
+		select *
+		from tbl_student
+		where std_no = #{sno}
+
 	</select>
 
 	<insert id="insertStudent" parameterType="student">
@@ -22,15 +47,16 @@
 	</insert>
 	<update id="updateStudent" parameterType="student">
 		update tbl_student
-		set std_phone = #{stdPhone}
+		set
+		std_phone = #{stdPhone}
 		where std_no = #{stdNo}
 
 	</update>
-	<delete id="deleteStudent" parameterType ="string">
-	DELETE  FROM tbl_student
-	WHERE std_no = #{stdNo}
-	
-	
+	<delete id="deleteStudent" parameterType="string">
+		DELETE FROM tbl_student
+		WHERE std_no = #{stdNo}
+
+
 	</delete>
 
 </mapper>

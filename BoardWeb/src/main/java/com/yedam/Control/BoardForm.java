@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class boardForm implements Control {
+public class BoardForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		req.getRequestDispatcher("WEB-INF/jsp/boardForm.jsp").forward(req,resp);
+		req.getRequestDispatcher("board/boardForm.tiles").forward(req,resp);
 	}
 
 }

@@ -35,14 +35,14 @@ public class BoardListControl implements Control {
 		req.setAttribute("boardList", list);
 
 		// pageing
-		int totalCnt = sve.totalCount();
+		int totalCnt = sve.totalCount(search);
 		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), totalCnt);
 		req.setAttribute("paging", pageDTO);
 		req.setAttribute("keyword", kw);
 		req.setAttribute("SearchCondition", sc);
 
 
-		req.getRequestDispatcher("WEB-INF/jsp/BoardList.jsp").forward(req, resp);
+		req.getRequestDispatcher("board/boardList.tiles").forward(req, resp);
 	}
 
 }

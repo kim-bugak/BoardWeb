@@ -17,13 +17,13 @@ public interface BoardMapper {
 	List<BoardVO> selectList();
 
 	List<BoardVO> selectListPaging(SearchVO search); // 페이지정보 -> 5건씩 출력
-	int selectTotalConunt();
+	int selectTotalConunt(SearchVO search);
 	int insertBoard(BoardVO board);
 
 	int updateBoard(BoardVO board);
 
 	int deleteBoard(int boardNo);
-
+	
 	BoardVO selectBoard(int boardNo);
 
 }

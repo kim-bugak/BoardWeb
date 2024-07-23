@@ -11,20 +11,21 @@ import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
-public class board implements Control {
+public class Board implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
 		
 		BoardService svc = new BoardServiceImpl();
-		BoardVO baord = svc.getBoard(Integer.parseInt(bno));
+		BoardVO board = svc.getBoard(Integer.parseInt(bno));
 		
-		req.setAttribute("board", baord);
+		req.setAttribute("board", board);
+		req.setAttribute("page", page);
 		
-		
-		req.getRequestDispatcher("WEB-INF/jsp/board.jsp").forward(req,resp);
+		req.getRequestDispatcher("board/board.tiles").forward(req,resp);
 		
 	}
 

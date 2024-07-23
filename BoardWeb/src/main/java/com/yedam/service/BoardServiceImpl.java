@@ -21,7 +21,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardVO> boardList(SearchVO search) {
-//		return mapper.selectList();
 		return mapper.selectListPaging(search);
 		
 	}
@@ -32,8 +31,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-    public int totalCount() {
-        return mapper.selectTotalConunt();
+    public int totalCount(SearchVO search) {
+        return mapper.selectTotalConunt(search);
     }
 
 	@Override

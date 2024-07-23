@@ -28,7 +28,7 @@ method) add;
 public interface BoardService {
 
 	List<BoardVO> boardList(SearchVO search);
-	int totalCount(); // 페이징 계싼
+	int totalCount(SearchVO search); // 페이징 계싼
 	boolean addBoard(BoardVO board);
 	boolean modifyBoard(BoardVO board);
 	boolean removeBoard(int boardNo);
