@@ -8,7 +8,16 @@
 	<select id="memberList" parameterType="string" resultType="com.yedam.vo.MemberVO">
 	select *
 	from tbl_member
-	where responsibility = 'User'
+	<choose>
+	<when test="au == 'User'.toString()">
+		where responsibility = 'User'
+		</when>
+			<when test="au == 'Admin'.toString()">
+		where responsibility = 'Admin'
+		</when>
+		<otherwise></otherwise>
+	</choose>
+	 
 	<choose>
 		<when test="order == 'member_id'.toString()">
 			order by member_id
@@ -55,8 +64,6 @@
 	<delete id="deleteStudent" parameterType="string">
 		DELETE FROM tbl_student
 		WHERE std_no = #{stdNo}
-
-
 	</delete>
 
 </mapper>
